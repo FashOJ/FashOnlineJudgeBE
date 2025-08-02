@@ -1,0 +1,82 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: fashoj-judge-service
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      database: 1
+      timeout: 2000ms
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+          max-wait: -1ms
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: fashoj
+    password: fashoj123
+    virtual-host: /
+    listener:
+      simple:
+        concurrency: 5
+        max-concurrency: 10
+        acknowledge-mode: manual
+        retry:
+          enabled: true
+          max-attempts: 3
+
+# 判题配置
+judge:
+  sandbox:
+    # C沙箱集群配置
+    clusters:
+      - name: cluster-1
+        endpoint: http://localhost:9001
+        capacity: 10
+      - name: cluster-2
+        endpoint: http://localhost:9002
+        capacity: 10
+  queue:
+    # 判题队列配置
+    name: judge_queue
+    routing-key: judge.submission
+    exchange: judge_exchange
+  limits:
+    # 默认资源限制
+    default-time-limit: 1000  # 毫秒
+    default-memory-limit: 128 # MB
+    max-time-limit: 10000     # 毫秒
+    max-memory-limit: 512     # MB
+
+# SpringDoc配置
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  info:
+    title: FashOJ Judge Service API
+    description: 判题服务API文档
+    version: 1.0.0
+
+logging:
+  level:
+    com.fashoj: DEBUG
+    org.springframework.amqp: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always

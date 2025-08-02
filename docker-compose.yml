@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: fashoj-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: fashoj123
+      MYSQL_DATABASE: fashoj
+      MYSQL_USER: fashoj
+      MYSQL_PASSWORD: fashoj123
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+
+  redis:
+    image: redis:7-alpine
+    container_name: fashoj-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data/redis:/data
+
+  minio:
+    image: minio/minio:latest
+    container_name: fashoj-minio
+    environment:
+      MINIO_ROOT_USER: fashoj
+      MINIO_ROOT_PASSWORD: fashoj123
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - ./data/minio:/data
+    command: server /data --console-address ":9001"
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: fashoj-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: fashoj
+      RABBITMQ_DEFAULT_PASS: fashoj123
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - ./data/rabbitmq:/var/lib/rabbitmq
