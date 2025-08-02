@@ -2,7 +2,7 @@
 
 ## 项目简介
 
-FashOJ（Fashion Online Judge）是一个开源的在线代码评测平台后端系统，采用微服务架构设计，支持多种编程语言的代码提交和自动判题。
+FashOJ（Fashion Online Judge）Backend是一个开源的在线代码评测平台后端系统，采用微服务架构设计，支持多种编程语言的代码提交和自动判题。
 
 ## 系统架构
 
