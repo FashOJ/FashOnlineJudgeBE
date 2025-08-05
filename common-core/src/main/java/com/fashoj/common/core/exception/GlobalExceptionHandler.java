@@ -17,7 +17,11 @@ import jakarta.validation.ConstraintViolationException;
 import java.util.stream.Collectors;
 
 /**
- * 全局异常处理器
+ * 全局异常处理器，统一处理应用中的各种异常
+ * 
+ * @author Lingbou
+ * @version 1.0
+ * @since 2025-08-06
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler {

@@ -3,7 +3,11 @@ package com.fashoj.common.core.response;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
- * 统一API响应格式
+ * 统一API响应格式，提供标准化的接口返回结构
+ * 
+ * @author Lingbou
+ * @version 1.0
+ * @since 2025-08-06
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiResponse<T> {

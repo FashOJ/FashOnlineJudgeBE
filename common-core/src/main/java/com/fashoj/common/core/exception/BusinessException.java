@@ -1,7 +1,11 @@
 package com.fashoj.common.core.exception;
 
 /**
- * 业务异常类
+ * 业务异常类，用于处理业务逻辑中的异常情况
+ * 
+ * @author Lingbou
+ * @version 1.0
+ * @since 2025-08-06
  */
 public class BusinessException extends RuntimeException {
 

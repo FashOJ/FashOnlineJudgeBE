@@ -12,7 +12,11 @@ import java.util.Map;
 import java.util.function.Function;
 
 /**
- * JWT工具类
+ * JWT工具类，提供JWT令牌的生成、解析和验证功能
+ * 
+ * @author Lingbou
+ * @version 1.0
+ * @since 2025-08-06
  */
 @Component
 public class JwtUtil {

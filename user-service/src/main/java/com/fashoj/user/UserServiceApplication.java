@@ -5,7 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
- * 用户服务启动类
+ * 用户服务启动类，提供用户管理和认证相关功能
+ * 
+ * @author Lingbou
+ * @version 1.0
+ * @since 2025-08-06
  */
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.fashoj.user", "com.fashoj.common"})

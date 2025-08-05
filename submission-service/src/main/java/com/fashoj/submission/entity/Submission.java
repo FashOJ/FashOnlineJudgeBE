@@ -6,7 +6,11 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 /**
- * 提交记录实体类
+ * 提交记录实体类，存储用户代码提交的详细信息
+ * 
+ * @author Lingbou
+ * @version 1.0
+ * @since 2025-08-06
  */
 @Entity
 @Table(name = "submissions")

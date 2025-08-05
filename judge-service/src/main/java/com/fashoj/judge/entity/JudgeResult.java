@@ -4,7 +4,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * 判题结果实体类
+ * 判题结果实体类，存储代码执行后的判题结果信息
+ * 
+ * @author Lingbou
+ * @version 1.0
+ * @since 2025-08-06
  */
 public class JudgeResult {
 

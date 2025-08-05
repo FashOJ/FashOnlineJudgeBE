@@ -7,7 +7,11 @@ import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 
 /**
- * Gateway服务启动类
+ * Gateway服务启动类，提供API网关功能和路由配置
+ * 
+ * @author Lingbou
+ * @version 1.0
+ * @since 2025-08-06
  */
 @SpringBootApplication
 public class GatewayApplication {

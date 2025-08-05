@@ -7,7 +7,11 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
 /**
- * 题目实体类
+ * 题目实体类，存储编程题目的详细信息
+ * 
+ * @author Lingbou
+ * @version 1.0
+ * @since 2025-08-06
  */
 @Entity
 @Table(name = "problems")

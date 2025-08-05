@@ -3,7 +3,11 @@ package com.fashoj.judge.entity;
 import java.time.LocalDateTime;
 
 /**
- * 判题任务实体类
+ * 判题任务实体类，存储待执行的判题任务信息
+ * 
+ * @author Lingbou
+ * @version 1.0
+ * @since 2025-08-06
  */
 public class JudgeTask {
 
