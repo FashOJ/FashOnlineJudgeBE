@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Pattern;
+import java.time.LocalDateTime;
 
 /**
  * 用户实体类，存储用户基本信息和统计数据
@@ -54,6 +56,43 @@ public class User extends BaseEntity {
 
     @Column(name = "rating", nullable = false)
     private Integer rating = 1200;
+
+    // 个人信息相关字段
+    @Column(name = "real_name", length = 50)
+    private String realName;
+
+    @Column(name = "school", length = 100)
+    private String school;
+
+    @Pattern(regexp = "^1[3-9]\\d{9}$", message = "手机号码格式不正确")
+    @Column(name = "phone_number", length = 11)
+    private String phoneNumber;
+
+    // 系统功能相关字段
+    @Column(name = "last_login_time")
+    private LocalDateTime lastLoginTime;
+
+    @Column(name = "login_count", nullable = false)
+    private Integer loginCount = 0;
+
+    @Column(name = "email_verified", nullable = false)
+    private Boolean emailVerified = false;
+
+    @Column(name = "preferred_language", length = 20)
+    private String preferredLanguage;
+
+    // 统计数据相关字段
+    @Column(name = "accepted_count", nullable = false)
+    private Integer acceptedCount = 0;
+
+    @Column(name = "contest_participated", nullable = false)
+    private Integer contestParticipated = 0;
+
+    @Column(name = "max_rating", nullable = false)
+    private Integer maxRating = 1200;
+
+    @Column(name = "ranking_position")
+    private Integer rankingPosition;
 
     // 用户角色枚举
     public enum UserRole {
@@ -144,5 +183,93 @@ public class User extends BaseEntity {
 
     public void setRating(Integer rating) {
         this.rating = rating;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public LocalDateTime getLastLoginTime() {
+        return lastLoginTime;
+    }
+
+    public void setLastLoginTime(LocalDateTime lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
+    }
+
+    public Integer getLoginCount() {
+        return loginCount;
+    }
+
+    public void setLoginCount(Integer loginCount) {
+        this.loginCount = loginCount;
+    }
+
+    public Boolean getEmailVerified() {
+        return emailVerified;
+    }
+
+    public void setEmailVerified(Boolean emailVerified) {
+        this.emailVerified = emailVerified;
+    }
+
+    public String getPreferredLanguage() {
+        return preferredLanguage;
+    }
+
+    public void setPreferredLanguage(String preferredLanguage) {
+        this.preferredLanguage = preferredLanguage;
+    }
+
+    public Integer getAcceptedCount() {
+        return acceptedCount;
+    }
+
+    public void setAcceptedCount(Integer acceptedCount) {
+        this.acceptedCount = acceptedCount;
+    }
+
+    public Integer getContestParticipated() {
+        return contestParticipated;
+    }
+
+    public void setContestParticipated(Integer contestParticipated) {
+        this.contestParticipated = contestParticipated;
+    }
+
+    public Integer getMaxRating() {
+        return maxRating;
+    }
+
+    public void setMaxRating(Integer maxRating) {
+        this.maxRating = maxRating;
+    }
+
+    public Integer getRankingPosition() {
+        return rankingPosition;
+    }
+
+    public void setRankingPosition(Integer rankingPosition) {
+        this.rankingPosition = rankingPosition;
     }
 }

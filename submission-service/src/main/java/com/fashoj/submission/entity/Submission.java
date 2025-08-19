@@ -4,6 +4,8 @@ import com.fashoj.common.data.entity.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Min;
+import java.time.LocalDateTime;
 
 /**
  * 提交记录实体类，存储用户代码提交的详细信息
@@ -59,6 +61,37 @@ public class Submission extends BaseEntity {
 
     @Column(name = "total_test_cases")
     private Integer totalTestCases;
+
+    // 提交环境相关字段
+    @Column(name = "ip_address", length = 45)
+    private String ipAddress;
+
+    @Column(name = "user_agent", columnDefinition = "TEXT")
+    private String userAgent;
+
+    @Min(value = 0, message = "代码长度不能为负数")
+    @Column(name = "code_length", nullable = false)
+    private Integer codeLength = 0;
+
+    // 判题详情相关字段
+    @Column(name = "queue_time")
+    private Integer queueTime; // 毫秒
+
+    @Column(name = "judge_time")
+    private Integer judgeTime; // 毫秒
+
+    @Column(name = "max_time_used")
+    private Integer maxTimeUsed; // 毫秒
+
+    @Column(name = "max_memory_used")
+    private Integer maxMemoryUsed; // KB
+
+    // 比赛相关字段
+    @Column(name = "contest_id")
+    private Long contestId;
+
+    @Column(name = "penalty_time")
+    private Integer penaltyTime; // 分钟
 
     // 编程语言枚举
     public enum Language {
@@ -181,5 +214,77 @@ public class Submission extends BaseEntity {
 
     public void setTotalTestCases(Integer totalTestCases) {
         this.totalTestCases = totalTestCases;
+    }
+
+    public String getIpAddress() {
+        return ipAddress;
+    }
+
+    public void setIpAddress(String ipAddress) {
+        this.ipAddress = ipAddress;
+    }
+
+    public String getUserAgent() {
+        return userAgent;
+    }
+
+    public void setUserAgent(String userAgent) {
+        this.userAgent = userAgent;
+    }
+
+    public Integer getCodeLength() {
+        return codeLength;
+    }
+
+    public void setCodeLength(Integer codeLength) {
+        this.codeLength = codeLength;
+    }
+
+    public Integer getQueueTime() {
+        return queueTime;
+    }
+
+    public void setQueueTime(Integer queueTime) {
+        this.queueTime = queueTime;
+    }
+
+    public Integer getJudgeTime() {
+        return judgeTime;
+    }
+
+    public void setJudgeTime(Integer judgeTime) {
+        this.judgeTime = judgeTime;
+    }
+
+    public Integer getMaxTimeUsed() {
+        return maxTimeUsed;
+    }
+
+    public void setMaxTimeUsed(Integer maxTimeUsed) {
+        this.maxTimeUsed = maxTimeUsed;
+    }
+
+    public Integer getMaxMemoryUsed() {
+        return maxMemoryUsed;
+    }
+
+    public void setMaxMemoryUsed(Integer maxMemoryUsed) {
+        this.maxMemoryUsed = maxMemoryUsed;
+    }
+
+    public Long getContestId() {
+        return contestId;
+    }
+
+    public void setContestId(Long contestId) {
+        this.contestId = contestId;
+    }
+
+    public Integer getPenaltyTime() {
+        return penaltyTime;
+    }
+
+    public void setPenaltyTime(Integer penaltyTime) {
+        this.penaltyTime = penaltyTime;
     }
 }
