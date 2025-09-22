@@ -18,11 +18,39 @@ spring:
         dialect: org.hibernate.dialect.MySQL8Dialect
         format_sql: true
     open-in-view: false
+  # Redis配置
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: 
+      database: 0
+      timeout: 2000ms
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+          max-wait: -1ms
+  # 邮件配置
+  mail:
+    host: smtp.qq.com
+    port: 587
+    username: your-email@qq.com
+    password: your-email-password
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
 
 # JWT配置
 jwt:
   secret: fashoj-secret-key-for-jwt-token-generation-and-validation
-  expiration: 86400000 # 24小时
+  access-token-expiration: 86400000 # 24小时
+  refresh-token-expiration: 604800000 # 7天
 
 # SpringDoc配置
 springdoc:
